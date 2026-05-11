@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 
 import React, { useState, useRef, DragEvent, ChangeEvent, useCallback, useMemo } from 'react';
 import Papa from 'papaparse';
+import { useSearchParams } from 'next/navigation';
 
 interface ValidationError {
   rowNumber: number;
@@ -14,6 +15,7 @@ interface ValidationError {
 type AppStep = 'UPLOAD' | 'COLUMN_SELECTION' | 'RESULTS';
 
 export default function Home() {
+  const searchParams = useSearchParams();
   // State Utama
   const [appStep, setAppStep] = useState<AppStep>('UPLOAD');
   const [file, setFile] = useState<File | null>(null);
